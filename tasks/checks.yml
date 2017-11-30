@@ -32,7 +32,7 @@
 - name: Checking that the agent is server or client 
   fail:
     msg: "Agent must be client OR server"
-  when: (client_enabled and not server_enabled) or (not client_enabled and server_enabled)
+  when: not client_enabled and not server_enabled
 
 - name: Checking that disable_tagged_metrics is not true when nomad_version<0.7.0
   fail:
