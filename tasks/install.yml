@@ -16,7 +16,7 @@
     dest: "{{ nomad_installation_dir }}"
     owner: "{{ nomad_user }}"
     group: "{{ nomad_group }}"
-    copy: yes
+
 
 - name: "Create Nomad directories"
   file:
