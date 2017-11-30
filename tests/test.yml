@@ -1,4 +1,7 @@
 ---
 - hosts: localhost
+  remote_user: serlophug
   roles:
-    - role_under_test
+    - ansible-role-nomad
+
+#nomad agent -config=/etc/nomad/
