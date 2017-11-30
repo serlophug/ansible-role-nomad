@@ -11,7 +11,8 @@
 
 - name: "Unarchive Nomad binary and copy to {{ nomad_installation_dir }}"
   unarchive: 
-    src: "/tmp/{{ nomad_name }}" 
+    src: "/tmp/{{ nomad_name }}"
+    remote_src: yes 
     dest: "{{ nomad_installation_dir }}"
     owner: "{{ nomad_user }}"
     group: "{{ nomad_group }}"
