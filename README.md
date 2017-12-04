@@ -1,38 +1,51 @@
-Role Name
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.org/serlophug/ansible-role-nomad.svg?branch=master)](https://travis-ci.org/serlophug/ansible-role-nomad)
+
+Ansible Role - Nomad agent 
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+It provides a totally customizable Ansible role for the installation of Nomad. If the variable ```create_nomad_service``` is ```true```, this role creates a Linux service.  
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The variables used for the installation and configuration are described in defaults/main file. 
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
+Deployment of client and server with Consul enabled (and available at 172.17.0.2):
+``` yml
     - hosts: servers
+      vars:
+        name: server 
+        nomad_user: nomad
+        nomad_group: nomad
+        bind_address: "172.17.0.3"
+        server_enabled: true
+        client_enabled: false
+        use_consul: true
+        consul_address: "172.17.0.2:8500"
+        create_nomad_service: true
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: serlophug.nomad }
+
+    - hosts: clients
+      vars:
+        name: server 
+        nomad_user: nomad
+        nomad_group: nomad
+        bind_address: "172.17.0.4"
+        server_enabled: false
+        client_enabled: true
+        use_consul: true
+        consul_address: "172.17.0.2:8500"
+        create_nomad_service: true
+      roles:
+         - { role: serlophug.nomad }
+```
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Apache 2.0
