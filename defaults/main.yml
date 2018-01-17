@@ -33,7 +33,7 @@ enable_syslog: false # Specifies if the agent should log to syslog. This option 
 leave_on_interrupt: false #(bool: false) - Specifies if the agent should gracefully leave when receiving the interrupt signal. By default, the agent will exit forcefully on any signal.
 leave_on_terminate: false #(bool: false) - Specifies if the agent should gracefully leave when receiving the terminate signal. By default, the agent will exit forcefully on any signal.
 log_level: "INFO" #(string: "INFO") - Specifies the verbosity of logs the Nomad agent will output. Valid log levels include WARN, INFO, or DEBUG in increasing order of verbosity.
-ports: # Specifies the network ports used for different services required by the Nomad agent.
+nomad_ports: # Specifies the network ports used for different services required by the Nomad agent.
   http: 4646 # The port used to run the HTTP server.
   rpc: 4647 # The port used for internal RPC communication between agents and servers, and for inter-server traffic for the consensus algorithm (raft).
   serf: 4648 # The port used for the gossip protocol for cluster membership. Both TCP and UDP should be routable between the server nodes on this port.

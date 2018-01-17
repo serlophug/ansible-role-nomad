@@ -13,9 +13,9 @@ log_level = "{{ log_level }}"
 syslog_facility = "{{ syslog_facility }}"
 
 ports {
-  http = {{ ports['http'] }}
-  rpc = {{ ports['rpc'] }}
-  serf = {{ ports['serf'] }}
+  http = {{ nomad_ports['http'] }}
+  rpc = {{ nomad_ports['rpc'] }}
+  serf = {{ nomad_ports['serf'] }}
 }
 
 {% if use_addresses == True %}
