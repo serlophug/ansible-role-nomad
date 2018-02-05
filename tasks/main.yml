@@ -26,7 +26,7 @@
   service:
     name: nomad
     enabled: yes
-    state: reloaded
+    state: started
   when: create_nomad_service
 
 - name: Start Nomad using nomad daemon
